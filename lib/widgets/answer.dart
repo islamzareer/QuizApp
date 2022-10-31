@@ -9,15 +9,16 @@ class Answer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+      margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
       width: double.infinity,
       child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 5),
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        height: 40,
         child: ElevatedButton(
           onPressed: x,
           child: Text(
             answerText,
-            style: const TextStyle(fontSize: 25),
+            style: const TextStyle(fontSize: 20),
           ),
         ),
       ),

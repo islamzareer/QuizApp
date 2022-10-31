@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/quistions_data.dart';
 import 'result.dart';
 import 'quiz.dart';
 
@@ -14,55 +15,26 @@ class MyApp extends StatefulWidget {
 bool isSwitched = false;
 
 class _MyAppState extends State<MyApp> {
-  int _questionIndex = 0;
-  int _totalScore = 0;
+  int questionIndex = 0;
+  int totalScore = 0;
 
   answerQuestion(int score) {
-    print('Answer Chosen!');
     setState(() {
-      _questionIndex += 1;
-      _totalScore += score;
-    });
-    print(_questionIndex);
-    print(_totalScore);
-  }
-
-  void _resetQuiz() {
-    setState(() {
-      _questionIndex = 0;
-      _totalScore = 0;
+      questionIndex += 1;
+      totalScore += score;
     });
   }
 
-  final List<Map<String, Object>> _questions = [
-    {
-      'questionText': 'What\'s your favourite color?',
-      'answers': [
-        {'text': 'Black', 'score': 10},
-        {'text': 'Green', 'score': 20},
-        {'text': 'Blue', 'score': 30},
-        {'text': 'Yellow', 'score': 40},
-      ]
-    },
-    {
-      'questionText': 'What\'s your favourite animal?',
-      'answers': [
-        {'text': 'Rabbit', 'score': 10},
-        {'text': 'Tiger', 'score': 20},
-        {'text': 'Elephant', 'score': 30},
-        {'text': 'Lion', 'score': 40},
-      ]
-    },
-    {
-      'questionText': 'What\'s your favourite instructor?',
-      'answers': [
-        {'text': 'Hassan', 'score': 10},
-        {'text': 'Hassan', 'score': 20},
-        {'text': 'Hassan', 'score': 30},
-        {'text': 'Hassan', 'score': 40},
-      ]
-    },
-  ];
+  void resetQuiz() {
+    setState(() {
+      questionIndex = 0;
+      totalScore = 0;
+    });
+  }
+
+  final QuestionsData questionsData = QuestionsData();
+
+  late List<Map<String, Object>> questions = questionsData.getQuestions();
 
   @override
   Widget build(BuildContext context) {
@@ -93,9 +65,9 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Container(
           color: isSwitched == false ? Colors.white : Colors.black,
-          child: _questionIndex < _questions.length
-              ? Quiz(_questions, _questionIndex, answerQuestion)
-              : Result(_resetQuiz, _totalScore),
+          child: questionIndex < questions.length
+              ? Quiz(questions, questionIndex, answerQuestion)
+              : Result(resetQuiz, totalScore),
         ),
       ),
     );

@@ -13,12 +13,15 @@ class Answer extends StatelessWidget {
       width: double.infinity,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8),
-        height: 40,
         child: ElevatedButton(
           onPressed: x,
-          child: Text(
-            answerText,
-            style: const TextStyle(fontSize: 20),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              textAlign: TextAlign.center,
+              answerText,
+              style: const TextStyle(fontSize: 20),
+            ),
           ),
         ),
       ),

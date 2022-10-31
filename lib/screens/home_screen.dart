@@ -37,23 +37,33 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.white),
-        backgroundColor: const Color.fromARGB(255, 39, 37, 37),
+        backgroundColor: Colors.grey,
+        actions: [
+          TextButton(
+            onPressed: () {
+              answerQuestion(0);
+            },
+            child: const Text(
+              "Skip",
+              style: TextStyle(color: Colors.black),
+            ),
+          )
+        ],
         title: const Text(
           'Quiz App',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
         ),
       ),
       body: Container(
         padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
-        color: Colors.grey,
+        color: const Color.fromARGB(255, 39, 37, 37),
         child: Column(
           children: [
             (questionIndex + 1 < 11)
                 ? Text(
                     "Question ${questionIndex + 1}/${questions.length} ",
                     style: const TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 30,
                         fontFamily: 'IslandMoments'),

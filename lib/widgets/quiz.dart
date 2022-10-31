@@ -19,16 +19,19 @@ class Quiz extends StatelessWidget {
     return Column(
       children: [
         Container(
-          width: double.infinity,
-      margin: const EdgeInsets.all(10),
-          child: Question(questions[questionIndex]['questionText'].toString())),
+            width: double.infinity,
+            margin: const EdgeInsets.all(10),
+            child:
+                Question(questions[questionIndex]['questionText'].toString())),
         ...(questions[questionIndex]['answers'] as List<Map<String, Object>>)
             .map((answer) {
           return Answer(
               () => answerQuestion(int.parse(answer['score'].toString())),
               answer['text'].toString());
         }).toList(),
+        
       ],
     );
   }
 }
+

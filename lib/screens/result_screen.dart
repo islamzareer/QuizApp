@@ -25,6 +25,7 @@ class Result extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
             'Done!',
@@ -34,34 +35,23 @@ class Result extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          Text(
-            'Total Score = $resultScore',
-            style: const TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-          Text(
-            resultPhrase,
-            style: const TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
+          CustomText('Total Score = $resultScore', Colors.black),
+          CustomText(resultPhrase, Colors.black),
           TextButton(
             onPressed: holder,
-            child: const Text(
-              'Restart The App',
-              style: TextStyle(
-                fontSize: 30,
-                //fontWeight: FontWeight.bold,
-              ),
-            ),
+            child: CustomText('Restart The App', Colors.red),
           ),
         ],
       ),
     );
   }
+
+  Text CustomText(String text, Color color) => Text(
+        text,
+        style: TextStyle(
+            color: color,
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
+            fontFamily: 'IslandMoments'),
+      );
 }

@@ -49,14 +49,23 @@ class _HomeScreenState extends State<HomeScreen> {
         color: Colors.grey,
         child: Column(
           children: [
-            Text(
-              "Question ${questionIndex + 1}/${questions.length} ",
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                  fontFamily: 'IslandMoments'),
-            ),
+            (questionIndex + 1 < 11)
+                ? Text(
+                    "Question ${questionIndex + 1}/${questions.length} ",
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        fontFamily: 'IslandMoments'),
+                  )
+                : const Text(
+                    "Result",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        fontFamily: 'IslandMoments'),
+                  ),
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
